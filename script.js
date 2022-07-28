@@ -62,6 +62,7 @@ function calculate(e) {
     }
     else if(this.id === 'equal') {
         result = operate(operator,value1,value2);
+        result = +result.toFixed(4);
         display.textContent = result;
         value = result;
         opCount = 0;

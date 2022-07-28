@@ -10,6 +10,7 @@ function multiply(a,b) {
 function divide(a,b) {
     return a/b;
 }
+
 function operate(operator,a,b) {
     if(operator === '+')
         return add(a,b);
@@ -23,36 +24,52 @@ function operate(operator,a,b) {
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => {
-    button.addEventListener('click',display);
+    button.addEventListener('click',calculate);
 });
 
 let value = '';
-let value1 = 0;
+let value1 = '';
 let value2 = '';
 let operator = '';
 let result;
-function display(e) {
-    let display = document.querySelector(".display");
-    if(this.id === "CLEAR") {
+let display = document.querySelector(".display");
+display.textContent = '';
+let opCount = 0;
+let opResult = '';
+
+function calculate(e) {
+    if(this.id === "clear") {
         display.textContent = '';
         value = '';
+        value1 = '';
+        value2 = '';
     }
     else if(this.id === '+' || this.id === '-' || this.id === 'x' || this.id === '/') {
-        value1 = +value;
-        display.textContent += ` ${this.id} `;
-        operator = this.id;
-        value = '';
+        opCount++;
+        if(opCount > 1) {
+            display.textContent += ` ${this.id} `;
+            opResult = operate(operator,value1,value2);
+            value1 = opResult;
+            operator = this.id;
+            value = '';
+        }
+        else {
+            value1 = +value;
+            display.textContent += ` ${this.id} `;
+            operator = this.id;
+            value = '';
+        }
     }
     else if(this.id === 'equal') {
         result = operate(operator,value1,value2);
         display.textContent = result;
+        value = result;
+        opCount = 0;
     }
     else {
         display.textContent += this.id;
         value += this.id;
-        console.log(value1); //console log
     }
     
     value2 = +value;
-    console.log(value2); //console log
 }

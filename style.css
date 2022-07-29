@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    border: 2px solid;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.display {
+    border: 1px solid;
+    height: 100px;
+    text-align: end;
+    /*white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;*/
+}
+
+.row {
+    display: flex;
+    flex: auto;
+}
+
+button {
+    flex: auto;
+}
+
+#clear {
+    flex-grow: 0;
+    width: 125.33px;
+}

@@ -63,7 +63,10 @@ function calculate(e) {
     else if(this.id === 'equal') {
         result = operate(operator,value1,value2);
         result = +result.toFixed(4);
-        display.textContent = result;
+        if(result === Infinity || result === NaN)
+            display.textContent = 'Invalid Input';
+        else 
+            display.textContent = result;
         value = result;
         opCount = 0;
     }
@@ -74,3 +77,6 @@ function calculate(e) {
     
     value2 = +value;
 }
+
+//1*/2 gives 0
+//expression that ends with * gives 0

@@ -63,7 +63,7 @@ function calculate(e) {
     else if(this.id === 'equal') {
         result = operate(operator,value1,value2);
         result = +result.toFixed(4);
-        if(result === Infinity || result === NaN)
+        if(result === Infinity || isNaN(result))
             display.textContent = 'Invalid Input';
         else 
             display.textContent = result;
